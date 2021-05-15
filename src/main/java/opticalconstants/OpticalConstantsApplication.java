@@ -1,11 +1,13 @@
+package opticalconstants;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OpticalConstants {
+public class OpticalConstantsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OpticalConstants.class, args);
+        SpringApplication.run(OpticalConstantsApplication.class, args);
     }
 
 }

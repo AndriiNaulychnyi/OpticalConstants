@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Optical Constants</span>
+        </div>
+    </nav>
+</header>
+
+<main class="container-fluid">
+    <h1 class="text-center display-6" style="padding: 10px">Результати обчислень</h1>
+    <div class="row" style="padding: 15px">
+        <h3 class="text-center " style="padding: 10px">Вхідні дані</h3>
+        <div class="col-md-8 mx-auto text-center">
+            <table class="table">
+                <tr>
+                    <th>x</th>
+                    <th>x</th>
+                    <th>x</th>
+                    <th>x</th>
+                    <th>x</th>
+                    <th>x</th>
+                </tr>
+                <tr>
+                    <td>y</td>
+                    <td>y</td>
+                    <td>y</td>
+                    <td>y</td>
+                    <td>y</td>
+                    <td>y</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <h3 class="text-center">Результати</h3>
+    <div class="row" style="padding: 15px">
+        <div class="col-md-8 mx-auto text-center">
+            <span>Завантажити CSV файл з результатами обчислень</span>
+            <button type="button" class="btn btn-outline-success">Завантажити</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <canvas id="resultChart"></canvas>
+        </div>
+    </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
+
+<script>
+    var ctx = document.getElementById('resultChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['1', '2', '3', '4', '5', '6', '7', '8'],
+            datasets: [{
+                label: 'r calc',
+                backgroundColor: 'rgb(245,165,8)',
+                borderColor: 'rgb(245,165,8)',
+                data: [1, 10, 15, 2, 12, 7, 5],
+            }, {
+                label: 'r sub',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [2, 1, 35, 5, 10, 12, 35],
+            }, {
+                label: 't calc',
+                backgroundColor: 'rgb(45,184,7)',
+                borderColor: 'rgb(45,184,7)',
+                data: [3, 10, 25, 6, 2, 13, 23],
+            }, {
+                label: 't sub',
+                backgroundColor: 'rgb(99,151,255)',
+                borderColor: 'rgb(99,151,255)',
+                data: [{x: 10, y: 20}, {x: 15, y: 83}, {x: 20, y: 10}],
+            }]
+        }
+    });
+</script>
+
+</body>
+</html>

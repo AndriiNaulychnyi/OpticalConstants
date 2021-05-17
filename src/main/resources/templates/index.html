@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <meta charset=utf-8>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 <body>
 <header>
@@ -15,89 +15,70 @@
 <main class="container-fluid">
     <div class="row ">
         <div class="col-sm-3 mx-auto">
-            <form class="mb-3" id="form">
-                <div>
-                    <label>
-
-                    </label>
-                </div>
-                <div class="mb-3 row">
+            <form class="mb-3" action="#"
+                  th:action="@{/calculate}"
+                  method="post" >
+                <div class="row">
                     <label for="inputLambda" class="col-sm-3 col-form-label">lambda</label>
-                    <div class="col-sm-9">
+                    <div class="col-sm-4">
                         <input type="text" class="form-control" name="lambda" id="inputLambda">
                     </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="row">
                     <label for="inputK" class="col-sm-3 col-form-label">k</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" name="k" id="inputK">
                     </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="row">
                     <label for="inputPrecision" class="col-sm-3 col-form-label">precision</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" name="precision" id="inputPrecision">
                     </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="row">
                     <label for="inputDFilm" class="col-sm-3 col-form-label">dfilm</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" name="dfilm" id="inputDFilm">
                     </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="row">
                     <label for="inputRSub" class="col-sm-3 col-form-label">rsub</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" name="rsub" id="inputRSub">
                     </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="row">
                     <label for="inputTSub" class="col-sm-3 col-form-label">tsub</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" name="tsub" id="inputTSub">
                     </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="row">
                     <label for="inputN0" class="col-sm-3 col-form-label">n0</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" name="n0" id="inputN0">
                     </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="row">
                     <label for="inputN2" class="col-sm-3 col-form-label">n2</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" name="n2" id="inputN2">
                     </div>
                 </div>
-                <div class="mb-3 row">
-                    <button type="button" class="btn btn-outline-success" onclick="send">Success</button>
+                <div class="row">
+                    <button type="button" class="btn btn-outline-success" onclick="submitData()">Success</button>
                 </div>
             </form>
         </div>
     </div>
 </main>
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
-<script>
-    $("#form").on("submit", function send(){
-        $.ajax({
-            url: '/calculate',
-            method: 'post',
-            str = '{' +
-                    "lambda" : ,
-                    "k" : 2.8,
-                    "precision" : 1000,
-                    "dfilm" : 10,
-                    "rsub" : 0.09837,
-                    "tsub" : 0.8993,
-                    "n0" : 1,
-                    "n2" : 1.43
-                    }'
-        });
-    });
-</script>
 </body>
 </html>

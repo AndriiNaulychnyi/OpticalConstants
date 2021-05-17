@@ -54,11 +54,11 @@ public class CalculationParam {
         this.rSub = rSub;
         this.n = n;
 
-        canculation();
+        calculate();
         log.info(toString());
     }
 
-    private void canculation() {
+    private void calculate() {
         initA();
         initB();
         initC();

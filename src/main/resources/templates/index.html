@@ -15,9 +15,7 @@
 <main class="container-fluid">
     <div class="row ">
         <div class="col-sm-3 mx-auto">
-            <form class="mb-3" action="#"
-                  th:action="@{/calculate}"
-                  method="post" >
+            <form class="mb-3" action="/calculate" method="post" >
                 <div class="row">
                     <label for="inputLambda" class="col-sm-3 col-form-label">lambda</label>
                     <div class="col-sm-4">
@@ -37,21 +35,21 @@
                     </div>
                 </div>
                 <div class="row">
-                    <label for="inputDFilm" class="col-sm-3 col-form-label">dfilm</label>
+                    <label for="inputDFilm" class="col-sm-3 col-form-label">d film</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="dfilm" id="inputDFilm">
+                        <input type="text" class="form-control" name="dFilm" id="inputDFilm">
                     </div>
                 </div>
                 <div class="row">
-                    <label for="inputRSub" class="col-sm-3 col-form-label">rsub</label>
+                    <label for="inputRSub" class="col-sm-3 col-form-label">r sub</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="rsub" id="inputRSub">
+                        <input type="text" class="form-control" name="rSub" id="inputRSub">
                     </div>
                 </div>
                 <div class="row">
-                    <label for="inputTSub" class="col-sm-3 col-form-label">tsub</label>
+                    <label for="inputTSub" class="col-sm-3 col-form-label">t sub</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="tsub" id="inputTSub">
+                        <input type="text" class="form-control" name="tSub" id="inputTSub">
                     </div>
                 </div>
                 <div class="row">
@@ -67,7 +65,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <button type="button" class="btn btn-outline-success" onclick="submitData()">Success</button>
+                    <button type="submit" class="btn btn-outline-success">Success</button>
                 </div>
             </form>
         </div>

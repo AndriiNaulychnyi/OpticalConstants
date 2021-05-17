@@ -1,10 +1,12 @@
 package opticalconstants.service;
 
+import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import static java.lang.Math.*;
 
+@Data
 public class CalculationParam {
 
     public static final Logger log = LoggerFactory.getLogger(CalculationParam.class);

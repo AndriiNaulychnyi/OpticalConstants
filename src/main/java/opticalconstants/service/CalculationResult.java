@@ -1,15 +1,13 @@
 package opticalconstants.service;
 
 import lombok.Data;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import static java.lang.Math.*;
 
 @Data
-public class CalculationParam {
-
-    public static final Logger log = LoggerFactory.getLogger(CalculationParam.class);
+@Slf4j
+public class CalculationResult {
 
     private Double lambda;
     private Double q;
@@ -17,6 +15,8 @@ public class CalculationParam {
     private Double k;
     private Double rSub;
     private Double tSub;
+    private Double rExp;
+    private Double tExp;
 
     private Double n0;
     private Double n;
@@ -45,7 +45,16 @@ public class CalculationParam {
     private Double rCalc;
     private Double tCalc;
 
-    public CalculationParam(Double lambda, Double d, Double k, Double n0, Double n2, Double tSub, Double rSub, Double n) {
+    public CalculationResult(Double lambda,
+                             Double d,
+                             Double k,
+                             Double n0,
+                             Double n2,
+                             Double tSub,
+                             Double rSub,
+                             Double tExp,
+                             Double rExp,
+                             Double n) {
         this.lambda = lambda;
         this.d = d;
         this.k = k;
@@ -54,6 +63,8 @@ public class CalculationParam {
         this.q = 2 * PI / lambda;
         this.tSub = tSub;
         this.rSub = rSub;
+        this.tExp = tExp;
+        this.rExp = rExp;
         this.n = n;
 
         calculate();

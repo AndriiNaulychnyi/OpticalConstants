@@ -27,23 +27,29 @@
 <main class="container-fluid">
     <div class="row" style="padding: 15px">
         <h3 class="text-center " style="padding: 10px">Вхідні дані</h3>
-        <div class="col-md-8 mx-auto text-center">
+        <div class="col-md-10 mx-auto text-center">
             <table class="table">
                 <tr>
-                    <th>x</th>
-                    <th>x</th>
-                    <th>x</th>
-                    <th>x</th>
-                    <th>x</th>
-                    <th>x</th>
+                    <th>lambda</th>
+                    <th>k</th>
+                    <th>precision</th>
+                    <th>d<sub>film</sub></th>
+                    <th>r<sub>sub</sub></th>
+                    <th>n<sub>0</sub></th>
+                    <th>n<sub>2</sub></th>
+                    <th>t<sub>exp</sub></th>
+                    <th>r<sub>exp</sub></th>
                 </tr>
                 <tr>
-                    <td>y</td>
-                    <td>y</td>
-                    <td>y</td>
-                    <td>y</td>
-                    <td>y</td>
-                    <td>y</td>
+                    <td  th:text="${input.lambda}">0</td>
+                    <td  th:text="${input.k}">0</td>
+                    <td  th:text="${input.precision}">0</td>
+                    <td  th:text="${input.DFilm}">0</td>
+                    <td  th:text="${input.RSub}">0</td>
+                    <td  th:text="${input.n0}">0</td>
+                    <td  th:text="${input.n2}">0</td>
+                    <td  th:text="${input.TExp}">0</td>
+                    <td  th:text="${input.RExp}">0</td>
                 </tr>
             </table>
         </div>
@@ -51,9 +57,11 @@
 
     <h3 class="text-center">Результати обчислень</h3>
     <div class="row" style="padding: 15px">
-        <div class="col-md-8 mx-auto text-center">
-            <span>Завантажити CSV файл з результатами обчислень</span>
-            <button type="button" class="btn btn-outline-success">Завантажити</button>
+        <div class="col-md-10 mx-auto text-center">
+            <span>Завантажити CSV файл з результатами обчислень:</span>
+            <a class="btn btn-outline-success" th:href="${resultFile}" download style="margin-left: 10px">
+                Завантажити
+            </a>
         </div>
     </div>
     <div class="row">

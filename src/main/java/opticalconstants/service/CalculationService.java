@@ -13,11 +13,11 @@ public class CalculationService {
 
     public static final Logger log = LoggerFactory.getLogger(CalculationService.class);
 
-    public List<CalculationParam> calculate(CalculationInput input) {
+    public List<CalculationResult> calculate(CalculationInput input) {
         log.info("Start calculation!");
-        List<CalculationParam> calculationResults = new ArrayList<>();
+        List<CalculationResult> calculationResults = new ArrayList<>();
         for (double n = 0; n <= 10; n+=0.01) {
-            CalculationParam calculationParam = new CalculationParam(
+            CalculationResult calculationResult = new CalculationResult(
                     input.getLambda(),
                     input.getDFilm(),
                     input.getK(),
@@ -25,9 +25,11 @@ public class CalculationService {
                     input.getN2(),
                     input.getTSub(),
                     input.getRSub(),
+                    input.getTExp(),
+                    input.getRExp(),
                     n);
 
-            calculationResults.add(calculationParam);
+            calculationResults.add(calculationResult);
         }
         log.info("Calculation finished!");
         return calculationResults;

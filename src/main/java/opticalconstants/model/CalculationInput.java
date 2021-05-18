@@ -27,5 +27,9 @@ public class CalculationInput {
     private Double n0;
     @NotNull
     private Double n2;
+    @NotNull
+    private Double tExp;
+    @NotNull
+    private Double rExp;
 
 }

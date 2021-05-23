@@ -10,13 +10,14 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <span class="navbar-brand" href="#">Optical Constants</span>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                            <a class="nav-link active" href="/">Головна</a>
+                        <a class="nav-link active" href="/">Головна</a>
                     </li>
                 </ul>
             </div>
@@ -41,15 +42,15 @@
                     <th>r<sub>exp</sub></th>
                 </tr>
                 <tr>
-                    <td  th:text="${input.lambda}">0</td>
-                    <td  th:text="${input.k}">0</td>
-                    <td  th:text="${input.precision}">0</td>
-                    <td  th:text="${input.DFilm}">0</td>
-                    <td  th:text="${input.RSub}">0</td>
-                    <td  th:text="${input.n0}">0</td>
-                    <td  th:text="${input.n2}">0</td>
-                    <td  th:text="${input.TExp}">0</td>
-                    <td  th:text="${input.RExp}">0</td>
+                    <td th:text="${input.lambda}">0</td>
+                    <td th:text="${input.k}">0</td>
+                    <td th:text="${input.precision}">0</td>
+                    <td th:text="${input.DFilm}">0</td>
+                    <td th:text="${input.RSub}">0</td>
+                    <td th:text="${input.n0}">0</td>
+                    <td th:text="${input.n2}">0</td>
+                    <td th:text="${input.TExp}">0</td>
+                    <td th:text="${input.RExp}">0</td>
                 </tr>
             </table>
         </div>
@@ -79,37 +80,45 @@
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
 
-<script>
-    var ctx = document.getElementById('resultChart').getContext('2d');
-    var chart = new Chart(ctx, {
+<script th:inline="javascript">
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    let calculationResults = /*[[${chartData}]]*/ {};
+    /*]]>*/
+
+    let datasets = [];
+    for (let i in calculationResults.datasets) {
+        let result = calculationResults.datasets[i];
+        let color = getRandomColor();
+        datasets.push({
+            label: result.label,
+            data: result.data,
+            tension: 0.3,
+            borderColor: color,
+            backgroundColor: color,
+        })
+    }
+
+    let ctx = document.getElementById('resultChart').getContext('2d');
+    let chart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['1', '2', '3', '4', '5', '6', '7', '8'],
-            datasets: [{
-                label: 'r calc',
-                backgroundColor: 'rgb(245,165,8)',
-                borderColor: 'rgb(245,165,8)',
-                data: [1, 10, 15, 2, 12, 7, 5],
-                tension: 0.3,
-            }, {
-                label: 'r sub',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [2, 1, 35, 5, 10, 12, 35],
-                tension: 0.3,
-            }, {
-                label: 't calc',
-                backgroundColor: 'rgb(45,184,7)',
-                borderColor: 'rgb(45,184,7)',
-                data: [3, 10, 25, 6, 2, 13, 23],
-                tension: 0.3,
-            }, {
-                label: 't sub',
-                backgroundColor: 'rgb(99,151,255)',
-                borderColor: 'rgb(99,151,255)',
-                data: [{x: 10, y: 20}, {x: 15, y: 83}, {x: 20, y: 10}],
-                tension: 0.3,
-            }]
+            datasets: datasets,
+            labels: calculationResults.nlist
+        },
+        options: {
+            elements: {
+                point: {
+                    pointRadius: 0
+                }
+            }
         }
     });
 </script>

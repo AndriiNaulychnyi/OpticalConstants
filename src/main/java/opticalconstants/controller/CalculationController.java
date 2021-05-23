@@ -1,5 +1,7 @@
 package opticalconstants.controller;
 
+import lombok.RequiredArgsConstructor;
+import opticalconstants.mapper.ChartDataMapper;
 import opticalconstants.model.CalculationInput;
 import opticalconstants.service.CalculationResult;
 import opticalconstants.service.CalculationService;
@@ -21,17 +23,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 public class CalculationController {
 
     private static final Logger log = LoggerFactory.getLogger(CalculationController.class);
 
     private final CalculationService calculationService;
     private final CsvService csvService;
-
-    public CalculationController(CalculationService calculationService, CsvService csvService) {
-        this.calculationService = calculationService;
-        this.csvService = csvService;
-    }
+    private final ChartDataMapper chartDataMapper;
 
     @GetMapping("/")
     public String showInputPage() {
@@ -41,12 +40,14 @@ public class CalculationController {
     @PostMapping("/calculate")
     public ModelAndView calculate(@Valid CalculationInput input) throws Exception {
         log.info("Received calculation request. Input: {}", input);
-        List<CalculationResult> results = calculationService.calculate(input);
-        String fileName = csvService.saveToCsv(results);
+        var results = calculationService.calculate(input);
+        var fileName = csvService.saveToCsv(results);
+        var chartData = chartDataMapper.toChartDataRecords(results);
 
         ModelAndView modelAndView = new ModelAndView("results");
         modelAndView.addObject("input", input);
         modelAndView.addObject("resultFile", "/results/" + fileName);
+        modelAndView.addObject("chartData", chartData);
         return modelAndView;
     }
 

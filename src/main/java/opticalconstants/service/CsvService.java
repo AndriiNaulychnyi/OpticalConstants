@@ -15,7 +15,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.Writer;
 import java.nio.file.Files;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -34,7 +33,7 @@ public class CsvService {
     }
 
     public String saveToCsv(List<CalculationResult> itemsToSave) throws Exception {
-        String fileName = String.format("%s_%s.csv", LocalDateTime.now(), UUID.randomUUID());
+        String fileName = String.format("%s_%s.csv", System.currentTimeMillis(), UUID.randomUUID());
         Writer writer = new FileWriter(csvFolder + fileName, false);
 
         StatefulBeanToCsv<CsvRecord> sbc = new StatefulBeanToCsvBuilder<CsvRecord>(writer)
